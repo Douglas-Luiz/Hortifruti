@@ -1,25 +1,25 @@
 function criarCards() {
-    fetch(dados).then((rest) => rest.json()).then((data) => {
-        data.map((produto) => {
-            const cardBox = document.createElement('div')
-            const cardImg = document.createElement('img')
-            const pNome = document.createElement('p')
-            const pValor = document.createElement('p')
+
+    base.map((produto) => {
+        const cardBox = document.createElement('div')
+        const cardImg = document.createElement('img')
+        const pNome = document.createElement('p')
+        const pValor = document.createElement('p')
 
 
-            const btn = document.createElement('button')
+        const btn = document.createElement('button')
 
 
-            cardBox.classList.add('card-box')
-            cardImg.src = produto.path
-            cardImg.alt = `imagem de ${produto.nome}`
-            pNome.innerHTML = produto.nome
-            pNome.classList.add('produto-nome')
-            pValor.classList.add('produto-valor')
-            pValor.innerHTML = `${produto.valor.toLocaleString('pt-bt', { style: 'currency', currency: 'BRL' })} (${produto.type})`
+        cardBox.classList.add('card-box')
+        cardImg.src = produto.path
+        cardImg.alt = `imagem de ${produto.nome}`
+        pNome.innerHTML = produto.nome
+        pNome.classList.add('produto-nome')
+        pValor.classList.add('produto-valor')
+        pValor.innerHTML = `${produto.valor.toLocaleString('pt-bt', { style: 'currency', currency: 'BRL' })} (${produto.type})`
 
-            btn.classList.add('bt-add-carrinho')
-            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-plus"
+        btn.classList.add('bt-add-carrinho')
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-plus"
                viewBox="0 0 16 16">
                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
                <path
@@ -27,38 +27,37 @@ function criarCards() {
              </svg>`
 
 
-            btn.onclick = () => {
+        btn.onclick = () => {
 
 
 
-                const nomePdt = produto.nome
-                const valorPdt = produto.valor
-                const idPdt = produto.id
+            const nomePdt = produto.nome
+            const valorPdt = produto.valor
+            const idPdt = produto.id
 
-                let pdtFinal = {
-                    idPdt, nomePdt, valorPdt
-                }
-
-
-
-
-                salvarCarrinho(pdtFinal)
-                criarCarrinho()
-
-
+            let pdtFinal = {
+                idPdt, nomePdt, valorPdt
             }
 
 
 
 
+            salvarCarrinho(pdtFinal)
+            criarCarrinho()
 
 
-            cardBox.appendChild(cardImg)
-            cardBox.appendChild(pNome)
-            cardBox.appendChild(pValor)
+        }
 
-            cardBox.appendChild(btn)
-            home.appendChild(cardBox)
-        })
+
+
+
+
+
+        cardBox.appendChild(cardImg)
+        cardBox.appendChild(pNome)
+        cardBox.appendChild(pValor)
+
+        cardBox.appendChild(btn)
+        home.appendChild(cardBox)
     })
 }
